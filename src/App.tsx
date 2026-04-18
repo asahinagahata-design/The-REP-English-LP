@@ -85,28 +85,24 @@ export default function App() {
 
   const faqData = [
     {
-      q: "英語が本当に苦手でも大丈夫ですか？",
-      a: "はい。講師全員が英語ゼロから始めた経験を持っています。どんなレベルの方でも丁寧に対応します。"
+      q: "1回の授業時間はどれぐらいですか？",
+      a: "1回50分のレッスンを月4回お届けします。"
     },
     {
-      q: "毎日どのくらいの時間が必要ですか？",
-      a: "最低15〜30分から始められます。コーチと一緒に無理のないペースを設計しますので、お気軽にご相談ください。"
+      q: "パートごとに特化した対策は可能ですか？",
+      a: "はい、可能です。特定のパートに特化したご指導いたします。"
     },
     {
-      q: "途中でプランを変更できますか？",
-      a: "はい、スコアの進捗に合わせていつでも変更できます。コーチと相談しながら最適なプランに切り替えましょう。"
+      q: "無料体験とはどのようなものですか？",
+      a: "30分間の無料オンラインレッスンです。実際の授業スタイルをそのままご体験いただけますので、安心してお申し込みいただけます。"
     },
     {
-      q: "無料体験では何をするのですか？",
-      a: "コーチとのオンライン面談（30分）で、現状確認と学習プランのご提案をします。入会の強制は一切ありません。"
+      q: "担当の先生が合わなかった場合、変更できますか？",
+      a: "はい、変更可能です。チューターにお気軽にご相談ください。お一人おひとりに合った講師をご提案いたします。"
     },
     {
-      q: "解約はいつでもできますか？",
-      a: "はい、月単位でご利用いただけます。いつでも解約可能で、違約金等は一切ございません。"
-    },
-    {
-      q: "完全オンラインとはどういう意味ですか？",
-      a: "全ての授業・コーチング・コミュニティがオンラインで完結します。全国どこからでも受講いただけます。"
+      q: "チューターとは何ですか？",
+      a: "チューターは、月に1回、学習状況のご確認やお悩みのご相談をお受けするサポート担当者です。勉強面だけでなく、モチベーション、英検合格後の将来についてなんでもお気軽にご相談いただけます。"
     }
   ];
 
@@ -114,7 +110,14 @@ export default function App() {
     <>
       {/* NAV */}
       <nav>
-        <a href="#" className="nav-logo">THE <span>REP</span> ENGLISH</a>
+        <a href="#" className="nav-logo" aria-label="The Rep English トップへ">
+          <img
+            className="nav-logo-img"
+            src="/logo-the-rep-english.png"
+            alt="The Rep English"
+            decoding="async"
+          />
+        </a>
         <a href="#" className="nav-cta" onClick={openTrialModal}>
           {TRIAL_CTA_LABEL}
         </a>
@@ -166,19 +169,19 @@ export default function App() {
         <div className="news-cards">
           <a href="#" className="news-card" onClick={openTrialModal}>
             <div className="news-card-media">
-              <img src="https://picsum.photos/seed/news-toeic-june/640/360" alt="" referrerPolicy="no-referrer" />
+              <img src="/news-toeic-june.png" alt="" />
             </div>
-            <span className="news-card-text">6月TOEIC直前対策講座に申し込む</span>
+            <span className="news-card-text">6月、TOEIC直前対策講座に申し込む</span>
           </a>
           <a href="#" className="news-card" onClick={openTrialModal}>
             <div className="news-card-media">
-              <img src="https://picsum.photos/seed/news-study-club/640/360" alt="" referrerPolicy="no-referrer" />
+              <img src="/news-score-up-club.png" alt="" />
             </div>
             <span className="news-card-text">〇〇と学ぶ、点数アップ部　申し込みはこちら</span>
           </a>
           <a href="#" className="news-card" onClick={openTrialModal}>
             <div className="news-card-media">
-              <img src="https://picsum.photos/seed/news-2026-goal/640/360" alt="" referrerPolicy="no-referrer" />
+              <img src="/news-2026-goal.png" alt="" />
             </div>
             <span className="news-card-text">2026年内に目標点数に向けて対策講座</span>
           </a>
@@ -190,7 +193,7 @@ export default function App() {
         <p className="section-label">THE PROBLEM</p>
 
         <div className="pain-hook-row">
-          <h2 className="pain-hook-title">TOEICで独学続かないですよね。</h2>
+          <h2 className="pain-hook-title">TOEICは独学では続かない。</h2>
           <ul className="pain-list pain-list--hook">
             <li>参考書を買ったけど、すべて手をつけられていない</li>
             <li>何から始めればいいのか、よくわからない</li>
@@ -232,11 +235,11 @@ export default function App() {
 
       {/* INSTRUCTOR */}
       <section id="instructor">
-        <p className="section-label">OUR INSTRUCTORS</p>
+        <p className="section-label">OUR TEACHERS</p>
 
         <div className="instructor-intro">
           <div className="instructor-intro-text">
-            <h2 className="section-title">教えるのは、同じ挑戦、挫折をした私たちです。</h2>
+            <h2 className="section-title">教えるのは、同じ挑戦、挫折をした私たち</h2>
             <p className="section-body">The Rep Englishの講師は全員、日本語ネイティブ。英語ゼロの状態から、自力でスコア900点超えを達成してきました。<br /><br />「わからない」「どこから手をつければいい？」その気持ちを、誰よりもわかっています。</p>
             <p className="instructor-note-link-wrap">
               <a href={NOTE_INSTRUCTORS_URL} className="instructor-note-link" target="_blank" rel="noopener noreferrer">
@@ -278,7 +281,7 @@ export default function App() {
       {/* PLAN */}
       <section id="plan">
         <p className="section-label">PRICING PLANS</p>
-        <h2 className="section-title plan-title-inline">今の自分に合ったコースからスタートできます。</h2>
+        <h2 className="section-title plan-title-inline">今の自分に合ったコースからスタート</h2>
         <p className="plan-sublead">シンプルな料金プラン</p>
         <p className="plan-appeal">入会金なしで始められます</p>
         <p className="section-body plan-intro-body">どのプランか迷っても大丈夫。無料体験でコーチと一緒に決めましょう。</p>
@@ -291,8 +294,7 @@ export default function App() {
             <div className="plan-price">¥15,990<span>/月</span></div>
             <div className="plan-note">まずはここから始めましょう</div>
           </div>
-          <div className="plan-card featured">
-            <div className="plan-badge">POPULAR</div>
+          <div className="plan-card">
             <div className="plan-name">ROAD TO 600</div>
             <div className="plan-target">600点突破を目指す方</div>
             <div className="plan-lessons">月5回レッスン：50分レッスン（4回）と30分のコーチング（1回）</div>
@@ -381,7 +383,7 @@ export default function App() {
                   ▼
                 </span>
               </div>
-              <div className={`faq-a overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-40 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
+              <div className={`faq-a overflow-hidden transition-all duration-300 ${openFaq === index ? 'max-h-[min(70vh,28rem)] mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
                 {item.a}
               </div>
             </div>
@@ -406,8 +408,14 @@ export default function App() {
 
       {/* FOOTER */}
       <footer>
-        <div className="footer-logo">THE <span>REP</span> ENGLISH</div>
-        <div className="footer-copy">© 2025 GLOOVY HOUSE Co., Ltd. All rights reserved.</div>
+        <div className="footer-brand">
+          <img
+            className="footer-logo-img"
+            src="/logo-the-rep-english.png"
+            alt="The Rep English"
+            decoding="async"
+          />
+        </div>
       </footer>
 
       {trialModalOpen && (
