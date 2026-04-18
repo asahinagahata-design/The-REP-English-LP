@@ -397,6 +397,15 @@ export default function App() {
           <p className="cta-label">FREE TRIAL</p>
           <h2 className="cta-title">まず一歩、<br />踏み出してみてください。</h2>
           <p className="cta-sub">無料体験は30分。コーチと話すだけでOKです。<br />入会の強制は一切ありません。</p>
+          <div className="cta-banner">
+            <img
+              src="/free-trial-line-banner.png"
+              alt="無料相談・無料体験レッスンのお申し込みは公式LINEから"
+              className="cta-banner-img"
+              decoding="async"
+              loading="lazy"
+            />
+          </div>
           <div className="cta-actions">
             <a href="#" className="btn-primary" onClick={openTrialModal}>
               {TRIAL_CTA_LABEL} <span className="arrow">→</span>

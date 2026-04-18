@@ -960,8 +960,21 @@ section {
   font-size: 15px;
   color: var(--gray);
   font-weight: 300;
-  margin-bottom: 56px;
+  margin-bottom: 40px;
   line-height: 2;
+}
+
+.cta-banner {
+  margin: 0 auto 48px;
+  max-width: min(440px, 92vw);
+}
+
+.cta-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  border: 1px solid var(--border);
 }
 
 .cta-actions {
@@ -1555,8 +1568,15 @@ footer {
   .cta-label { font-size: 10px; }
   .cta-title { font-size: clamp(28px, 8vw, 44px); line-height: 1.15; }
   .cta-title br { display: none; }
-  .cta-sub { font-size: 13px; margin-bottom: 28px; line-height: 1.75; }
+  .cta-sub { font-size: 13px; margin-bottom: 20px; line-height: 1.75; }
   .cta-sub br { display: none; }
+  .cta-banner {
+    margin-bottom: 28px;
+    max-width: min(100%, 360px);
+  }
+  .cta-banner-img {
+    border-radius: 12px;
+  }
   .cta-actions {
     display: flex;
     flex-direction: column;
