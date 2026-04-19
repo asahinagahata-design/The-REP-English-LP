@@ -1389,7 +1389,7 @@ footer {
     min-width: 0;
     padding-top: 18px;
     padding-bottom: 8px;
-    margin-top: 8px;
+    margin-top: clamp(80px, 18vh, 160px);
     box-sizing: border-box;
   }
   .hero-title-one-line {
