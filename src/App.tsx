@@ -139,7 +139,8 @@ export default function App() {
           />
         </a>
         <a href="#" className="nav-cta" onClick={openTrialModal}>
-          {TRIAL_CTA_LABEL}
+          <span className="nav-cta-label nav-cta-label--desktop">{TRIAL_CTA_LABEL}</span>
+          <span className="nav-cta-label nav-cta-label--mobile">無料カウンセリングに申し込む</span>
         </a>
       </nav>
 
