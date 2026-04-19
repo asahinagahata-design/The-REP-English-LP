@@ -964,17 +964,22 @@ section {
   line-height: 2;
 }
 
-.cta-banner {
-  margin: 0 auto 48px;
-  max-width: min(440px, 92vw);
+.cta-line-lead {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--white);
+  font-weight: 500;
+  margin: 0 auto 28px;
+  max-width: 560px;
 }
 
-.cta-banner-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 16px;
-  border: 1px solid var(--border);
+.cta-line-lead-strong {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--orange);
+  letter-spacing: 0.02em;
 }
 
 .cta-actions {
@@ -982,6 +987,53 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 16px;
+}
+
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #06C755;
+  color: #ffffff;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 18px 40px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 20px rgba(6, 199, 85, 0.25);
+}
+
+.btn-line:hover {
+  background: #05B14C;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(6, 199, 85, 0.32);
+}
+
+.btn-line .arrow {
+  font-size: 20px;
+  transition: transform 0.2s;
+}
+
+.btn-line:hover .arrow { transform: translateX(4px); }
+
+.btn-line-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  background: #ffffff;
+  color: #06C755;
+  padding: 3px 8px;
+  border-radius: 6px;
+  line-height: 1;
 }
 
 /* ── 無料体験モーダル（外部リンク） ── */
@@ -1139,25 +1191,63 @@ section {
 /* ── FOOTER ── */
 footer {
   background: var(--black);
-  padding: 36px 48px;
+  padding: 48px 48px;
   border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  gap: 40px 56px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .footer-brand {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   line-height: 0;
 }
 
 .footer-logo-img {
   display: block;
-  height: 52px;
+  height: 60px;
   width: auto;
-  max-width: min(300px, 85vw);
+  max-width: 280px;
   object-fit: contain;
+}
+
+.footer-about {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.footer-about-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--orange);
+  text-transform: uppercase;
+}
+
+.footer-about-text {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--gray-light);
+  font-weight: 400;
+  max-width: 640px;
+}
+
+.footer-copy {
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--gray);
 }
 
 /* ── ANIMATIONS ── */
@@ -1250,7 +1340,19 @@ footer {
     top: -50px;
   }
   .hero-video {
-    transform: translate(-50%, -50%) scale(1.11);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0.15) 35%,
+      rgba(255, 255, 255, 0.65) 100%
+    );
   }
   .hero-content {
     width: 100%;
@@ -1344,7 +1446,14 @@ footer {
   .pain-list li { font-size: 13px; padding-bottom: 10px; }
   .pain-conclusion { padding: 18px 18px; }
   .pain-conclusion--full { margin-top: 22px; }
-  .pain-conclusion-headline + .pain-conclusion-headline { margin-top: 8px; }
+  .pain-conclusion-headline {
+    font-size: clamp(13px, 3.6vw, 18px);
+    line-height: 1.35;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pain-conclusion-headline + .pain-conclusion-headline { margin-top: 6px; }
 
   /* SOLUTION — モバイルで01〜03を横並び */
   .solution-grid {
@@ -1396,96 +1505,96 @@ footer {
   .instructor-intro-text {
     max-width: 100%;
   }
-  /* OUR TEACHERS Noteカード — モバイルでも3枚横並び */
+  /* OUR TEACHERS — モバイルではNote導線を簡潔に */
+  .instructor-note-link-wrap {
+    margin-top: 12px;
+  }
+  .instructor-note-link {
+    font-size: 13px;
+  }
   .instructor-note-cards {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 6px;
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
   .instructor-note-card {
-    border-radius: 8px;
+    flex-direction: row;
+    align-items: stretch;
+    border-radius: 10px;
   }
   .instructor-note-card-media {
-    aspect-ratio: 4 / 5;
+    flex: 0 0 38%;
+    max-width: 38%;
+    aspect-ratio: 4 / 3;
   }
   .instructor-note-card-media-fallback {
     min-height: 0;
   }
   .instructor-note-card-fallback-logo {
-    font-size: clamp(14px, 4.5vw, 20px);
+    font-size: clamp(16px, 5vw, 22px);
   }
   .instructor-note-card-body {
-    padding: 6px 5px 7px;
-    gap: 2px;
+    padding: 10px 12px 10px;
+    gap: 4px;
+    flex: 1;
+    justify-content: center;
   }
   .instructor-note-card-site {
-    font-size: 7px;
-    letter-spacing: 0.06em;
+    font-size: 9px;
+    letter-spacing: 0.08em;
   }
   .instructor-note-card-title {
-    font-size: 10px;
-    line-height: 1.35;
-    -webkit-line-clamp: 4;
+    font-size: 13px;
+    line-height: 1.4;
+    -webkit-line-clamp: 3;
   }
   .instructor-note-card-cta {
-    font-size: 9px;
-    margin-top: 1px;
+    font-size: 11px;
+    margin-top: 2px;
   }
-  /* PLAN — モバイルで4枚横並び（余白削減・文字拡大） */
+  /* PLAN — モバイルでは縦1列に */
   .plan-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 3px;
+    grid-template-columns: 1fr;
+    gap: 12px;
     margin-top: 28px;
   }
   .plan-card {
-    padding: 6px 3px;
+    padding: 22px 20px;
     min-width: 0;
   }
   .plan-name {
-    font-size: 13px;
+    font-size: 20px;
     font-weight: 900;
-    letter-spacing: 0.02em;
-    margin-bottom: 3px;
-    line-height: 1.15;
-    word-break: break-all;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    word-break: keep-all;
   }
   .plan-target {
-    font-size: 10px;
-    line-height: 1.35;
-    margin-bottom: 3px;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 10px;
     min-height: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
   .plan-lessons {
-    font-size: 9px;
-    line-height: 1.4;
-    margin-top: 1px;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 4px;
     min-height: 0;
     flex: 1 1 auto;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
   .plan-price {
-    font-size: 20px;
-    padding-top: 5px;
+    font-size: 36px;
+    padding-top: 16px;
     margin-top: auto;
   }
   .plan-price span {
-    font-size: 10px;
-    margin-left: 1px;
+    font-size: 14px;
+    margin-left: 3px;
   }
   .plan-note {
-    font-size: 9px;
-    margin-top: 3px;
-    line-height: 1.35;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    font-size: 11px;
+    margin-top: 8px;
+    line-height: 1.5;
   }
 
   /* STEPS — HOW IT WORKS 01〜05 を横並び */
@@ -1533,6 +1642,13 @@ footer {
   }
 
   /* COMMUNITY */
+  .community-title-inline {
+    font-size: clamp(20px, 5.6vw, 30px);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .community-body { font-size: 13px; margin-top: 20px; }
 
   /* FAQ */
@@ -1568,14 +1684,15 @@ footer {
   .cta-label { font-size: 10px; }
   .cta-title { font-size: clamp(28px, 8vw, 44px); line-height: 1.15; }
   .cta-title br { display: none; }
-  .cta-sub { font-size: 13px; margin-bottom: 20px; line-height: 1.75; }
+  .cta-sub { font-size: 13px; margin-bottom: 18px; line-height: 1.75; }
   .cta-sub br { display: none; }
-  .cta-banner {
-    margin-bottom: 28px;
-    max-width: min(100%, 360px);
+  .cta-line-lead {
+    font-size: 14px;
+    margin-bottom: 22px;
+    line-height: 1.7;
   }
-  .cta-banner-img {
-    border-radius: 12px;
+  .cta-line-lead-strong {
+    font-size: 16px;
   }
   .cta-actions {
     display: flex;
@@ -1584,7 +1701,8 @@ footer {
     gap: 12px;
     max-width: 100%;
   }
-  .cta-actions .btn-primary {
+  .cta-actions .btn-primary,
+  .cta-actions .btn-line {
     width: 100%;
     justify-content: center;
     min-height: 48px;
@@ -1593,13 +1711,37 @@ footer {
     box-sizing: border-box;
   }
 
-  /* FOOTER */
+  /* FOOTER — モバイルでもロゴ左／概要右の2カラム維持 */
   footer {
     padding: 28px max(16px, env(safe-area-inset-left)) 32px max(16px, env(safe-area-inset-right));
     padding-bottom: max(28px, env(safe-area-inset-bottom));
   }
+  .footer-inner {
+    grid-template-columns: minmax(0, 38%) minmax(0, 1fr);
+    gap: 16px 14px;
+    align-items: start;
+  }
+  .footer-brand {
+    justify-content: flex-start;
+  }
   .footer-logo-img {
-    height: 44px;
-    max-width: min(260px, 90vw);
+    height: auto;
+    width: 100%;
+    max-width: 140px;
+  }
+  .footer-about {
+    gap: 6px;
+  }
+  .footer-about-title {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+  }
+  .footer-about-text {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .footer-copy {
+    font-size: 9px;
+    margin-top: 4px;
   }
 }

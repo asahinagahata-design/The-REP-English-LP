@@ -48,6 +48,9 @@ const SECONDARY_LINK_URL = import.meta.env.VITE_SECONDARY_LINK_URL?.trim() ?? ''
 const SECONDARY_LINK_LABEL =
   import.meta.env.VITE_SECONDARY_LINK_LABEL?.trim() || '別の方法で申し込む';
 const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL?.trim() ?? '';
+/** 公式LINE 友だち追加URL（無料相談・無料体験の申込窓口） */
+const OFFICIAL_LINE_URL =
+  import.meta.env.VITE_OFFICIAL_LINE_URL?.trim() || 'https://line.me/R/ti/p/@your-line-id';
 
 /** ナビ・ヒーロー・フッター前CTA など共通の予約導線ラベル */
 const TRIAL_CTA_LABEL = '完全無料の30分カウンセリングを申し込む';
@@ -396,17 +399,24 @@ export default function App() {
         <div className="cta-inner">
           <p className="cta-label">FREE TRIAL</p>
           <h2 className="cta-title">まず一歩、<br />踏み出してみてください。</h2>
-          <p className="cta-sub">無料体験は30分。コーチと話すだけでOKです。<br />入会の強制は一切ありません。</p>
-          <div className="cta-banner">
-            <img
-              src="/free-trial-line-banner.png"
-              alt="無料相談・無料体験レッスンのお申し込みは公式LINEから"
-              className="cta-banner-img"
-              decoding="async"
-              loading="lazy"
-            />
-          </div>
+          <p className="cta-sub">
+            無料体験は30分。コーチと話すだけでOKです。<br />
+            入会の強制は一切ありません。
+          </p>
+          <p className="cta-line-lead">
+            無料相談・無料体験レッスンのお申し込みは<br />
+            <span className="cta-line-lead-strong">公式LINEから</span>
+          </p>
           <div className="cta-actions">
+            <a
+              href={OFFICIAL_LINE_URL}
+              className="btn-line"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="btn-line-icon" aria-hidden>LINE</span>
+              公式LINEで申し込む <span className="arrow">→</span>
+            </a>
             <a href="#" className="btn-primary" onClick={openTrialModal}>
               {TRIAL_CTA_LABEL} <span className="arrow">→</span>
             </a>
@@ -417,13 +427,24 @@ export default function App() {
 
       {/* FOOTER */}
       <footer>
-        <div className="footer-brand">
-          <img
-            className="footer-logo-img"
-            src="/logo-the-rep-english.png"
-            alt="The Rep English"
-            decoding="async"
-          />
+        <div className="footer-inner">
+          <div className="footer-brand">
+            <img
+              className="footer-logo-img"
+              src="/logo-the-rep-english.png"
+              alt="The Rep English"
+              decoding="async"
+            />
+          </div>
+          <div className="footer-about">
+            <p className="footer-about-title">サービス概要</p>
+            <p className="footer-about-text">
+              The Rep English は、TOEIC スコアアップに特化したオンライン英語塾です。
+              ゼロから900点超えを達成した日本人講師が、マンツーマンレッスンと
+              専属メンターによる伴走で、続けられる学習環境を提供します。
+            </p>
+            <p className="footer-copy">© {new Date().getFullYear()} The Rep English. All rights reserved.</p>
+          </div>
         </div>
       </footer>
 
