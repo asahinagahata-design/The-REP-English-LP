@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect, useCallback, type MouseEvent } from 'react';
+import { useState, useEffect, useCallback, useRef, type MouseEvent } from 'react';
 
 /**
  * @license
@@ -58,6 +58,23 @@ const TRIAL_CTA_LABEL = '完全無料の30分カウンセリングを申し込�
 export default function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [trialModalOpen, setTrialModalOpen] = useState(false);
+  const heroVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+    const disableTracks = () => {
+      const tracks = video.textTracks;
+      for (let i = 0; i < tracks.length; i++) {
+        tracks[i].mode = 'disabled';
+      }
+    };
+    disableTracks();
+    video.addEventListener('loadedmetadata', disableTracks);
+    return () => {
+      video.removeEventListener('loadedmetadata', disableTracks);
+    };
+  }, []);
 
   const openTrialModal = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -130,6 +147,7 @@ export default function App() {
       <section id="hero">
         <div className="hero-video-container">
           <video
+            ref={heroVideoRef}
             autoPlay
             muted
             loop

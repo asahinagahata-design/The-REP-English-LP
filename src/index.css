@@ -123,6 +123,22 @@ nav {
   opacity: 1;
 }
 
+/* 動画の埋め込み字幕（textTracks/CC）を完全非表示 */
+.hero-video::cue {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  background: transparent !important;
+  color: transparent !important;
+}
+.hero-video::-webkit-media-text-track-display,
+.hero-video::-webkit-media-text-track-container,
+.hero-video::-webkit-media-text-track-background {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -1332,13 +1348,14 @@ footer {
   #hero {
     min-height: 0;
     height: auto;
-    padding: 20px max(16px, env(safe-area-inset-left)) 24px max(16px, env(safe-area-inset-right));
+    /* ナビ高さ分（約64px）を上に確保してヘッダーと被らないように */
+    padding: 76px max(16px, env(safe-area-inset-left)) 24px max(16px, env(safe-area-inset-right));
     justify-content: flex-start;
   }
   .hero-bg, .hero-line { display: none; }
   .hero-video-container {
     position: absolute;
-    top: -50px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -1348,8 +1365,9 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center center;
-    transform: translate(-50%, -50%) scale(1);
+    /* 字幕が焼き込まれている場合は下部20%程度を画面外に追い出す */
+    object-position: center 18%;
+    transform: translate(-50%, -50%) scale(1.12);
   }
   .hero-overlay {
     background: linear-gradient(
@@ -1511,7 +1529,7 @@ footer {
   .instructor-intro-text {
     max-width: 100%;
   }
-  /* OUR TEACHERS — モバイルでは横長コンパクトカード（画面内に収める） */
+  /* OUR TEACHERS — モバイル: 中央寄せの極小カード（画面内に余裕を持って収める） */
   .instructor-note-link-wrap {
     margin-top: 10px;
     margin-bottom: 4px;
@@ -1521,96 +1539,101 @@ footer {
   }
   .instructor-note-cards {
     grid-template-columns: 1fr;
-    gap: 8px;
+    gap: 6px;
     width: 100%;
-    max-width: 100%;
+    max-width: min(280px, 80vw);
     min-width: 0;
+    margin: 0 auto;
   }
   .instructor-note-card {
     flex-direction: row;
     align-items: stretch;
-    border-radius: 8px;
+    border-radius: 6px;
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
   }
   .instructor-note-card-media {
-    flex: 0 0 28%;
-    max-width: 28%;
-    aspect-ratio: 4 / 3;
+    flex: 0 0 64px;
+    max-width: 64px;
+    width: 64px;
+    height: 48px;
+    aspect-ratio: auto;
     min-height: 0;
   }
   .instructor-note-card-media-fallback {
     min-height: 0;
   }
   .instructor-note-card-fallback-logo {
-    font-size: clamp(12px, 3.6vw, 16px);
+    font-size: 11px;
   }
   .instructor-note-card-body {
-    padding: 6px 8px;
-    gap: 2px;
+    padding: 4px 7px;
+    gap: 1px;
     flex: 1;
     min-width: 0;
     justify-content: center;
   }
   .instructor-note-card-site {
-    font-size: 8px;
-    letter-spacing: 0.06em;
+    font-size: 7px;
+    letter-spacing: 0.04em;
   }
   .instructor-note-card-title {
-    font-size: 11px;
-    line-height: 1.35;
+    font-size: 10px;
+    line-height: 1.25;
     -webkit-line-clamp: 2;
   }
   .instructor-note-card-cta {
-    font-size: 9px;
-    margin-top: 1px;
+    font-size: 8px;
+    margin-top: 0;
   }
-  /* PLAN — モバイルでは縦1列に */
+  /* PLAN — モバイル: 縦1列・縦幅コンパクト（横幅は維持） */
   .plan-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
-    margin-top: 28px;
+    gap: 8px;
+    margin-top: 20px;
   }
   .plan-card {
-    padding: 22px 20px;
+    padding: 12px 16px;
     min-width: 0;
   }
   .plan-name {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 900;
-    letter-spacing: 0.04em;
-    margin-bottom: 6px;
-    line-height: 1.2;
+    letter-spacing: 0.03em;
+    margin-bottom: 2px;
+    line-height: 1.15;
     word-break: keep-all;
+    min-height: 0;
   }
   .plan-target {
-    font-size: 12px;
-    line-height: 1.6;
-    margin-bottom: 10px;
+    font-size: 11px;
+    line-height: 1.4;
+    margin-bottom: 4px;
     min-height: 0;
   }
   .plan-lessons {
-    font-size: 12px;
-    line-height: 1.6;
-    margin-top: 4px;
+    font-size: 11px;
+    line-height: 1.45;
+    margin-top: 2px;
     min-height: 0;
     flex: 1 1 auto;
   }
   .plan-price {
-    font-size: 36px;
-    padding-top: 16px;
+    font-size: 24px;
+    padding-top: 6px;
     margin-top: auto;
+    line-height: 1;
   }
   .plan-price span {
-    font-size: 14px;
-    margin-left: 3px;
+    font-size: 11px;
+    margin-left: 2px;
   }
   .plan-note {
-    font-size: 11px;
-    margin-top: 8px;
-    line-height: 1.5;
+    font-size: 10px;
+    margin-top: 4px;
+    line-height: 1.35;
   }
 
   /* STEPS — HOW IT WORKS 01〜05 を横並び */
@@ -1666,34 +1689,53 @@ footer {
   }
   .community-body { font-size: 13px; margin-top: 20px; }
 
-  /* FAQ — モバイルではコンパクトに5件すべて表示 */
+  /* FAQ — モバイル: 横幅・縦幅とも画面内に収める */
   #faq {
-    padding-top: 36px;
-    padding-bottom: 36px;
+    padding: 32px 12px 32px;
   }
-  .faq-grid { grid-template-columns: 1fr; gap: 6px; margin-top: 18px; }
-  .faq-item { padding: 10px 12px; }
-  .faq-q {
-    font-size: 12px;
-    line-height: 1.4;
-    margin-bottom: 0;
+  .faq-grid {
+    grid-template-columns: 1fr;
     gap: 6px;
+    margin-top: 14px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .faq-item {
+    padding: 8px 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+  .faq-q {
+    font-size: 11px;
+    line-height: 1.35;
+    margin-bottom: 0;
+    gap: 5px;
+    flex-wrap: nowrap;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
   }
   .faq-q::before {
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1;
+    flex-shrink: 0;
   }
   .faq-q span.ml-auto {
     flex-shrink: 0;
     margin-left: auto;
     align-self: flex-start;
     padding-top: 1px;
-    font-size: 10px;
+    font-size: 9px;
   }
   .faq-a {
-    font-size: 11px;
-    line-height: 1.65;
+    font-size: 10px;
+    line-height: 1.55;
     padding-left: 0;
-    margin-top: 8px;
+    margin-top: 6px;
+    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 
   /* CTA */
