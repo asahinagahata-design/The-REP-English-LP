@@ -1543,7 +1543,8 @@ footer {
     width: 100%;
     max-width: min(280px, 80vw);
     min-width: 0;
-    margin: 0 auto;
+    margin: 0;
+    margin-right: auto;
   }
   .instructor-note-card {
     flex-direction: row;
@@ -1619,6 +1620,12 @@ footer {
     margin-top: 2px;
     min-height: 0;
     flex: 1 1 auto;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    line-break: strict;
+  }
+  .plan-lessons-nowrap {
+    white-space: nowrap;
   }
   .plan-price {
     font-size: 24px;

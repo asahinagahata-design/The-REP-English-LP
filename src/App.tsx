@@ -311,28 +311,28 @@ export default function App() {
           <div className="plan-card">
             <div className="plan-name">FIRST REP</div>
             <div className="plan-target">TOEIC初挑戦の方</div>
-            <div className="plan-lessons">月5回レッスン：50分レッスン（4回）と30分のコーチング（1回）</div>
+            <div className="plan-lessons">月5回レッスン：50分レッスン（4回）と<span className="plan-lessons-nowrap">30分のコーチング（1回）</span></div>
             <div className="plan-price">¥15,990<span>/月</span></div>
             <div className="plan-note">まずはここから始めましょう</div>
           </div>
           <div className="plan-card">
             <div className="plan-name">ROAD TO 600</div>
             <div className="plan-target">600点突破を目指す方</div>
-            <div className="plan-lessons">月5回レッスン：50分レッスン（4回）と30分のコーチング（1回）</div>
+            <div className="plan-lessons">月5回レッスン：50分レッスン（4回）と<span className="plan-lessons-nowrap">30分のコーチング（1回）</span></div>
             <div className="plan-price">¥17,990<span>/月</span></div>
             <div className="plan-note">最も選ばれているプラン</div>
           </div>
           <div className="plan-card">
             <div className="plan-name">ROAD TO 800</div>
             <div className="plan-target">800点の壁を越えたい方</div>
-            <div className="plan-lessons">月5回レッスン：50分レッスン（4回）と30分のコーチング（1回）</div>
+            <div className="plan-lessons">月5回レッスン：50分レッスン（4回）と<span className="plan-lessons-nowrap">30分のコーチング（1回）</span></div>
             <div className="plan-price">¥19,980<span>/月</span></div>
             <div className="plan-note">ビジネスで差をつけるスコアへ</div>
           </div>
           <div className="plan-card">
             <div className="plan-name">ELITE REP</div>
             <div className="plan-target">800点超・さらに上を目指す方</div>
-            <div className="plan-lessons">月5回レッスン：50分レッスン（4回）と30分のコーチング（1回）</div>
+            <div className="plan-lessons">月5回レッスン：50分レッスン（4回）と<span className="plan-lessons-nowrap">30分のコーチング（1回）</span></div>
             <div className="plan-price">¥24,950<span>/月</span></div>
             <div className="plan-note">本気でトップを目指す方へ</div>
           </div>
